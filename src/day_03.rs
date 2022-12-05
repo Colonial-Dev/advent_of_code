@@ -1,25 +1,37 @@
-pub fn solution() {
-    let input: Vec<_> = include_str!("inputs/03.txt").lines().collect();
+use super::*;
 
-    let sum = input.iter()
-        .map(|line| {
-            let end = line.len();
-            let midpoint = end / 2;
-            [&line[0..midpoint], &line[midpoint..end]]
-        })
-        .map(find_array_intersection)
-        .map(priority_codes)
-        .sum::<u64>();
+impl<'a> Solution<'a, DAY_03> for Solutions {
+    type Input = Vec<&'a str>;
+    type Output = u64;
 
-    let group_sum = input.chunks(3)
-        .map(<[&str; 3]>::try_from)
-        .map(Result::unwrap)
-        .map(find_array_intersection)
-        .map(priority_codes)
-        .sum::<u64>();
-    
-    println!("The priority sum is {sum}.");
-    println!("The group sum is {group_sum}.");
+    fn parse(puzzle: &'a str) -> Self::Input {
+        puzzle.lines().collect()
+    }
+
+    fn part_one(input: &Self::Input) -> Option<Self::Output> {
+        input
+            .iter()
+            .map(|line| {
+                let end = line.len();
+                let midpoint = end / 2;
+                [&line[0..midpoint], &line[midpoint..end]]
+            })
+            .map(find_array_intersection)
+            .map(priority_codes)
+            .sum::<u64>()
+            .into()
+    }
+
+    fn part_two(input: &Self::Input) -> Option<Self::Output> {
+        input
+            .chunks(3)
+            .map(<[&str; 3]>::try_from)
+            .map(Result::unwrap)
+            .map(find_array_intersection)
+            .map(priority_codes)
+            .sum::<u64>()
+            .into()
+    }
 }
 
 fn find_array_intersection<const N: usize>(set: [&str; N]) -> Vec<char> {

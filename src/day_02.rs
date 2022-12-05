@@ -1,5 +1,50 @@
+use super::*;
 use Shape::*;
 use DesiredOutcome::*;
+
+impl<'a> Solution<'a, DAY_02> for Solutions {
+    type Input = Vec<&'a str>;
+    type Output = u64;
+
+    fn parse(puzzle: &'a str) -> Self::Input {
+        puzzle.lines().collect()
+    }
+
+    fn part_one(input: &Self::Input) -> Option<Self::Output> {
+        input
+            .iter()
+            .map(|line| {
+                line
+                    .split_once(' ')
+                    .map(|(c, r)| (Shape::from(c), Shape::from(r)))
+                    .unwrap()
+            })
+            .map(Shape::compute_outcome)
+            .sum::<u64>()
+            .into()
+    }
+
+    fn part_two(input: &Self::Input) -> Option<Self::Output> {
+        input
+            .iter()    
+            .map(|line| {
+                line
+                    .split_once(' ')
+                    .map(|(c, r)| (Shape::from(c), DesiredOutcome::from(r)))
+                    .unwrap()
+            })
+            .map(|(challenge, outcome)| {
+                (challenge, match outcome {
+                    Loss => challenge.wins_against(),
+                    Draw => challenge,
+                    Win => challenge.loses_to()
+                })
+            })
+            .map(Shape::compute_outcome)
+            .sum::<u64>()
+            .into()
+    }
+}
 
 #[repr(u8)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -71,41 +116,4 @@ impl From<&str> for DesiredOutcome {
             _ => unreachable!()
         }
     }
-}
-
-pub fn solution() {
-    let matchups = include_str!("inputs/02.txt").lines();
-    
-    let initial_score = matchups
-        .clone()
-        .map(|line| {
-            line
-                .split_once(' ')
-                .map(|(c, r)| (Shape::from(c), Shape::from(r)))
-                .unwrap()
-        })
-        .map(Shape::compute_outcome)
-        .sum::<u64>();
-
-    let correct_score = matchups
-        .clone()
-        .map(|line| {
-            line
-                .split_once(' ')
-                .map(|(c, r)| (Shape::from(c), DesiredOutcome::from(r)))
-                .unwrap()
-        })
-        .map(|(challenge, outcome)| {
-            (challenge, match outcome {
-                Loss => challenge.wins_against(),
-                Draw => challenge,
-                Win => challenge.loses_to()
-            })
-        })
-        .map(Shape::compute_outcome)
-        .sum::<u64>();
-    
-
-    println!("The predicted total of all scores using the initial method is {initial_score}.");
-    println!("The predicted total of all scores using the correct method is {correct_score}.");
 }

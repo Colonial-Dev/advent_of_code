@@ -1,37 +1,46 @@
+use super::*;
 use std::ops::Range;
 
-pub fn solution() {
-    let input: Vec<_> = include_str!("inputs/04.txt")
-        .lines()
-        .map(|line| {
-            line
-                .split_once(',')
-                .unwrap()
-        })
-        .map(|(left, right)| (
-            pair_to_range(left),
-            pair_to_range(right)
-        ))
-        .collect();
+impl Solution<'_, DAY_04> for Solutions {
+    type Input = Vec<(Range<u64>, Range<u64>)>;
+    type Output = usize;
 
-    let fully_overlapping_ct = input
-        .iter()
-        .filter(|(left, right)| {
-            (left.start >= right.start) && (left.end <= right.end)
-            ||
-            (right.start >= left.start) && (right.end <= left.end)
-        })
-        .count();
+    fn parse(puzzle: &'_ str) -> Self::Input {
+        puzzle
+            .lines()
+            .map(|line| {
+                line
+                    .split_once(',')
+                    .unwrap()
+            })
+            .map(|(left, right)| (
+                pair_to_range(left),
+                pair_to_range(right)
+            ))
+            .collect()
+    }
 
-    let partially_overlapping_ct = input
-        .iter()
-        .filter(|(left, right)| {
-            (left.start <= right.end) && (right.start <= left.end)           
-        })
-        .count();
+    fn part_one(input: &Self::Input) -> Option<Self::Output> {
+        input
+            .iter()
+            .filter(|(left, right)| {
+                (left.start >= right.start) && (left.end <= right.end)
+                ||
+                (right.start >= left.start) && (right.end <= left.end)
+            })
+            .count()
+            .into()
+    }
 
-    println!("{fully_overlapping_ct} assignment pairs have fully overlapping ranges.");
-    println!("{partially_overlapping_ct} assignment pairs have some level of overlap.");
+    fn part_two(input: &Self::Input) -> Option<Self::Output> {
+        input
+            .iter()
+            .filter(|(left, right)| {
+                (left.start <= right.end) && (right.start <= left.end)           
+            })
+            .count()
+            .into()
+    }
 }
 
 fn pair_to_range(pair: &str) -> Range<u64> {

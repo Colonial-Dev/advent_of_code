@@ -1,19 +1,21 @@
-#![allow(dead_code)]
 #![warn(clippy::perf, clippy::style, warnings)]
+#![allow(dead_code, unused_variables)]
 
+mod framework;
 mod day_01;
 mod day_02;
 mod day_03;
 mod day_04;
+mod day_05;
 
-macro_rules! time_exec {
-    ($fn:expr) => {
-        let start = std::time::Instant::now();
-        $fn();
-        println!("Execution took {} μs", start.elapsed().as_micros());
-    };
-}
+use framework::prelude::*;
+
+struct Solutions {}
 
 fn main() {
-    time_exec!(day_04::solution);
+    solve!(Solutions, DAY_01, include_str!("inputs/01.txt"));
+    solve!(Solutions, DAY_02, include_str!("inputs/02.txt"));
+    solve!(Solutions, DAY_03, include_str!("inputs/03.txt"));
+    solve!(Solutions, DAY_04, include_str!("inputs/04.txt"));
+    solve!(Solutions, DAY_05, include_str!("inputs/05.txt"));
 }
