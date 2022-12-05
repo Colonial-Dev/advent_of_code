@@ -1,11 +1,11 @@
 use super::*;
 use std::ops::Range;
 
-impl Solution<'_, DAY_04> for Solutions {
-    type Input = Vec<(Range<u64>, Range<u64>)>;
+impl Solution<DAY_04> for Solutions {
+    type Input<'a> = Vec<(Range<u64>, Range<u64>)>;
     type Output = usize;
 
-    fn parse(puzzle: &'_ str) -> Self::Input {
+    fn parse(puzzle: &'_ str) -> Self::Input<'_> {
         puzzle
             .lines()
             .map(|line| {
@@ -20,7 +20,7 @@ impl Solution<'_, DAY_04> for Solutions {
             .collect()
     }
 
-    fn part_one(input: &Self::Input) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
         input
             .iter()
             .filter(|(left, right)| {
@@ -32,7 +32,7 @@ impl Solution<'_, DAY_04> for Solutions {
             .into()
     }
 
-    fn part_two(input: &Self::Input) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
         input
             .iter()
             .filter(|(left, right)| {

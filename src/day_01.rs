@@ -1,10 +1,10 @@
 use super::*;
 
-impl Solution<'_, DAY_01> for Solutions {
-    type Input = [u64; 3];
+impl Solution<DAY_01> for Solutions {
+    type Input<'a> = [u64; 3];
     type Output = u64;
 
-    fn parse(puzzle: &str) -> Self::Input {
+    fn parse(puzzle: &str) -> Self::Input<'_> {
         puzzle
             .split("\n\n")
             .map(|set| {
@@ -24,11 +24,11 @@ impl Solution<'_, DAY_01> for Solutions {
             })
     }
 
-    fn part_one(input: &Self::Input) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
         Some(input[0])
     }
 
-    fn part_two(input: &Self::Input) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
         Some(input.iter().sum::<u64>())
     }
 }

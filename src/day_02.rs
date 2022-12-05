@@ -2,15 +2,15 @@ use super::*;
 use Shape::*;
 use DesiredOutcome::*;
 
-impl<'a> Solution<'a, DAY_02> for Solutions {
-    type Input = Vec<&'a str>;
+impl Solution<DAY_02> for Solutions {
+    type Input<'a> = Vec<&'a str>;
     type Output = u64;
 
-    fn parse(puzzle: &'a str) -> Self::Input {
+    fn parse(puzzle: &str) -> Self::Input<'_> {
         puzzle.lines().collect()
     }
 
-    fn part_one(input: &Self::Input) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
         input
             .iter()
             .map(|line| {
@@ -24,7 +24,7 @@ impl<'a> Solution<'a, DAY_02> for Solutions {
             .into()
     }
 
-    fn part_two(input: &Self::Input) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
         input
             .iter()    
             .map(|line| {
