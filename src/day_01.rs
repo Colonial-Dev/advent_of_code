@@ -32,3 +32,11 @@ impl Solution<DAY_01> for Solutions {
         Some(input.iter().sum::<u64>())
     }
 }
+
+impl Test<DAY_01> for Solutions {
+    fn expected() -> (Option<Self::Output>, Option<Self::Output>) {
+        (24_000.into(), 34_000.into())
+    }
+}
+
+derive_tests!(Solutions, DAY_01);

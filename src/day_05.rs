@@ -50,6 +50,14 @@ impl Solution<DAY_05> for Solutions {
     }
 }
 
+impl Test<DAY_05> for Solutions {
+    fn expected() -> (Option<Self::Output>, Option<Self::Output>) {
+        ("CMZ".to_string().into(), "MCD".to_string().into())
+    }
+}
+
+derive_tests!(Solutions, DAY_05);
+
 fn simulate_craning(commands: &[Command], stacks: &mut [Stack], reversed: bool) -> String {
     for cmd in commands {
         let source = &mut stacks[cmd.source];
@@ -66,6 +74,7 @@ fn simulate_craning(commands: &[Command], stacks: &mut [Stack], reversed: bool) 
 
     stacks
         .iter()
+        .filter(|stack| !stack.is_empty())
         .map(|stack| stack[0])
         .collect::<String>()
 }

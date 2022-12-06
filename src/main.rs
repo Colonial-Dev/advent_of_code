@@ -18,7 +18,7 @@ impl Solver for Solutions {
 
         let path = match testing {
             false => Path::new("src/inputs").join(format!("{day:02}.txt")),
-            true => Path::new("src/inputs").join(format!("{day:02}_test.txt"))
+            true => Path::new("src/inputs").join(format!("test_{day:02}.txt"))
         };
 
         std::fs::read_to_string(path).expect("Puzzle input could not be read.")

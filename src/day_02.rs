@@ -46,6 +46,14 @@ impl Solution<DAY_02> for Solutions {
     }
 }
 
+impl Test<DAY_02> for Solutions {
+    fn expected() -> (Option<Self::Output>, Option<Self::Output>) {
+        (15.into(), 12.into())
+    }
+}
+
+derive_tests!(Solutions, DAY_02);
+
 #[repr(u8)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum Shape {

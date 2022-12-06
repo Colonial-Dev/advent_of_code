@@ -43,6 +43,14 @@ impl Solution<DAY_04> for Solutions {
     }
 }
 
+impl Test<DAY_04> for Solutions {
+    fn expected() -> (Option<Self::Output>, Option<Self::Output>) {
+        (2.into(), 4.into())
+    }
+}
+
+derive_tests!(Solutions, DAY_04);
+
 fn pair_to_range(pair: &str) -> Range<u64> {
     pair
         .split_once('-')

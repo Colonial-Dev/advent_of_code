@@ -34,6 +34,14 @@ impl Solution<DAY_03> for Solutions {
     }
 }
 
+impl Test<DAY_03> for Solutions {
+    fn expected() -> (Option<Self::Output>, Option<Self::Output>) {
+        (157.into(), 70.into())
+    }
+}
+
+derive_tests!(Solutions, DAY_03);
+
 fn find_array_intersection<const N: usize>(set: [&str; N]) -> Vec<char> {
     let mut intersection = set[0]
         .chars()
