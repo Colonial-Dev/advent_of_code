@@ -1,3 +1,29 @@
+//! # Day 5 - Supply Stacks
+//! 
+//! Puzzle opened on time. 
+//! - P1 completed @ 01:11:38 (12976)
+//! - P2 completed @ 01:13:06 (11725)
+//! 
+//! "Oh God, it's actually just parsing hell." - Me, after reading the problem
+//! 
+//! ## Parsing
+//! This is what took most of my time. Parsing the commands is easy (see [`Command::from_str`]), but turning the
+//! little stack drawing into a well-typed data structure was... not.
+//! 
+//! My solution ended up using [`Iterator::skip`] and [`Iterator::step_by`] on the characters of each line to
+//! pull out each row of the stack, empty spaces included, then rotating them into a [`Vec<Vec<char>>`] via [`Iterator::for_each`] 
+//! and using [`Vec::retain`] to filter out the empties.
+//! 
+//! ## Solutions
+//! The two parts have almost the exact same behavior, so I was able to hoist it into the [`simulate_craning`] function.
+//! All it does is iterate over the movement commands, popping (or, more accurately, draining) the correct number of crates
+//! from the source stack and pushing them onto the front of the destination stack. 
+//! 
+//! The `reversed` parameter is used for part two, which pushes the crates onto the destination stack in reverse order 
+//! (to simulate the behavior of their order remaining the same.)
+//! 
+//! Once all commands have been exhausted, the stacks are iterated over and mapped to produce a string of the top crate in each stack.
+
 use super::*;
 
 impl Solution<DAY_05> for Solutions {

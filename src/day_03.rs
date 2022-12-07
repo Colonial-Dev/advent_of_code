@@ -1,3 +1,21 @@
+//! # Day 3 - Rucksack Reorganization
+//! 
+//! Puzzle opened on time. 
+//! - P1 completed @ 00:32:11 (10616)
+//! - P2 completed @ 00:53:36 (11174)
+//! 
+//! A slight jump in difficulty, requiring us to find the unique intersection of two string slices.
+//! 
+//! ## Parsing
+//! Like day 2, there's not much we can share between parts, so we just collect the lines of the puzzle.
+//! 
+//! ## Solutions
+//! - Part one maps each line of the input in half, then inserts those string slices into an array.
+//! Once we have an array, [`find_array_intersection`] finds the character(s) shared by both slices,
+//! and then [`priority_codes`] maps them to [`u64`]s for summing.
+//! - Part two is in some ways simpler; we chunk the input by 3, map each set of lines into an `[&str; 3]`, then proceed
+//! as in part one.
+
 use super::*;
 
 impl Solution<DAY_03> for Solutions {

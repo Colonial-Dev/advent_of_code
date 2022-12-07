@@ -1,3 +1,23 @@
+//! # Day 2 - Rock Paper Scissors
+//! 
+//! Puzzle opened on time. 
+//! - P1 completed @ 00:48:58 (15168)
+//! - P2 completed @ 01:37:25 (18691)
+//! 
+//! Another simple problem, but I wasted far too much time trying to be clever.
+//! 
+//! ## Parsing
+//! We can't really share much work between the two parts besides splitting the puzzle
+//! into its constituent lines and collecting.
+//! 
+//! ## Solutions
+//! - Part one assumes that both characters in a game correspond to a shape, so we simply
+//! map each line into two shapes, then map *those* over [`Shape::compute_outcome`] and sum to get the answer.
+//! - Part two requires us to instead measure the correct approach, where the second character is the desired outcome
+//! rather than what you should play. To solve this, we map each line into a [`Shape`] and a [`DesiredOutcome`], then do
+//! two more maps (one to convert the desired outcome into an actual shape to play, one to compute_outcome) before again summing
+//! to get the answer.
+
 use super::*;
 use Shape::*;
 use DesiredOutcome::*;
