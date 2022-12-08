@@ -52,8 +52,11 @@ impl Solution<DAY_01> for Solutions {
 }
 
 impl Test<DAY_01> for Solutions {
-    fn expected() -> (Option<Self::Output>, Option<Self::Output>) {
-        (24_000.into(), 34_000.into())
+    fn expected(part: bool) -> Self::Output {
+        match part {
+            PART_ONE => 24_000,
+            PART_TWO => 34_000
+        }
     }
 }
 

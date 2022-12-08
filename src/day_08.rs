@@ -17,8 +17,11 @@ impl Solution<DAY_08> for Solutions {
 }
 
 impl Test<DAY_08> for Solutions {
-    fn expected() -> (Option<Self::Output>, Option<Self::Output>) {
-        (None, None)
+    fn expected(part: bool) -> Self::Output {
+        match part {
+            PART_ONE => unimplemented!(),
+            PART_TWO => unimplemented!()
+        }
     }
 }
 

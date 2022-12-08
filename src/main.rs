@@ -15,18 +15,17 @@ use lib_aoc::prelude::*;
 struct Solutions {}
 
 impl Solver for Solutions {
-    fn load(day: u8, testing: bool) -> String {
-        use std::path::Path;
+    fn load(day: u8) -> String {
+        std::fs::read_to_string(format!("src/inputs/{day:02}.txt"))
+            .expect("Puzzle input could not be read.")
+    }
 
-        let path = match testing {
-            false => Path::new("src/inputs").join(format!("{day:02}.txt")),
-            true => Path::new("src/inputs").join(format!("test_{day:02}.txt"))
-        };
-
-        std::fs::read_to_string(path).expect("Puzzle input could not be read.")
+    fn load_test(day: u8) -> String {
+        std::fs::read_to_string(format!("src/inputs/test_{day:02}.txt"))
+            .expect("Puzzle input could not be read.")
     }
 }
 
 fn main() {
-    solve_through!(Solutions, 7);
+    solve_through!(Solutions, 8);
 }

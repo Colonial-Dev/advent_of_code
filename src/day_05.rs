@@ -77,8 +77,11 @@ impl Solution<DAY_05> for Solutions {
 }
 
 impl Test<DAY_05> for Solutions {
-    fn expected() -> (Option<Self::Output>, Option<Self::Output>) {
-        ("CMZ".to_string().into(), "MCD".to_string().into())
+    fn expected(part: bool) -> Self::Output {
+        match part {
+            PART_ONE => "CMZ".to_string(),
+            PART_TWO => "MCD".to_string()
+        }
     }
 }
 

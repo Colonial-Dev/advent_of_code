@@ -75,8 +75,11 @@ fn uniqueness_check(slice: &[char]) -> bool {
 }
 
 impl Test<DAY_06> for Solutions {
-    fn expected() -> (Option<Self::Output>, Option<Self::Output>) {
-        (7.into(), 19.into())
+    fn expected(part: bool) -> Self::Output {
+        match part {
+            PART_ONE => 7,
+            PART_TWO => 19
+        }
     }
 }
 
