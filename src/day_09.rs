@@ -68,7 +68,7 @@ impl Solution<DAY_09> for Solutions {
             .collect()
     }
 
-    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Self::Output {
         let mut rope = Rope::new(2);
 
         for direction in input {
@@ -76,10 +76,10 @@ impl Solution<DAY_09> for Solutions {
             rope.update_positions();
         }
 
-        rope.tail_tracker.len().into()
+        rope.tail_tracker.len()
     }
 
-    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Self::Output {
         let mut rope = Rope::new(10);
         
         for direction in input {
@@ -87,7 +87,7 @@ impl Solution<DAY_09> for Solutions {
             rope.update_positions();
         }
 
-        rope.tail_tracker.len().into()
+        rope.tail_tracker.len()
     }
 }
 

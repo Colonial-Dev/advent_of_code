@@ -42,12 +42,12 @@ impl Solution<DAY_01> for Solutions {
             })
     }
 
-    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
-        Some(input[0])
+    fn part_one(input: &Self::Input<'_>) -> Self::Output {
+        input[0]
     }
 
-    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
-        Some(input.iter().sum::<u64>())
+    fn part_two(input: &Self::Input<'_>) -> Self::Output {
+        input.iter().sum::<u64>()
     }
 }
 

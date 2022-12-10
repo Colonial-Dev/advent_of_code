@@ -37,7 +37,7 @@ impl Solution<DAY_04> for Solutions {
             .collect()
     }
 
-    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Self::Output {
         input
             .iter()
             .filter(|(left, right)| {
@@ -46,17 +46,15 @@ impl Solution<DAY_04> for Solutions {
                 (right.start >= left.start) && (right.end <= left.end)
             })
             .count()
-            .into()
     }
 
-    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Self::Output {
         input
             .iter()
             .filter(|(left, right)| {
                 (left.start <= right.end) && (right.start <= left.end)           
             })
             .count()
-            .into()
     }
 }
 

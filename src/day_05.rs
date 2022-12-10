@@ -63,16 +63,16 @@ impl Solution<DAY_05> for Solutions {
         (stacks, commands)
     }
 
-    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Self::Output {
         let (stacks, commands) = input;
         let mut stacks = stacks.to_owned();
-        simulate_craning(commands, &mut stacks, false).into()
+        simulate_craning(commands, &mut stacks, false)
     }
 
-    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Self::Output {
         let (stacks, commands) = input;
         let mut stacks = stacks.to_owned();
-        simulate_craning(commands, &mut stacks, true).into()
+        simulate_craning(commands, &mut stacks, true)
     }
 }
 

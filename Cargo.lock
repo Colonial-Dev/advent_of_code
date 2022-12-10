@@ -48,9 +48,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "lib_aoc"
-version = "0.6.2"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ce571ca65fc29a8fc4b72567d979ce054aab361ac6fc983fa068bfaa302c5d1b"
+checksum = "8cee66b2d34a9588be99738560338859cb12bd6e8d9d91784ab4553dc46de0e6"
 dependencies = [
  "colored",
  "seq-macro",

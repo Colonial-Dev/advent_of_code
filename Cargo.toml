@@ -4,4 +4,4 @@ version = "1.0.0"
 edition = "2021"
 
 [dependencies]
-lib_aoc = "0.6"
+lib_aoc = "0.7"

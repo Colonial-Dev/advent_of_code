@@ -30,7 +30,7 @@ impl Solution<DAY_02> for Solutions {
         puzzle.lines().collect()
     }
 
-    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Self::Output {
         input
             .iter()
             .map(|line| {
@@ -41,10 +41,9 @@ impl Solution<DAY_02> for Solutions {
             })
             .map(Shape::compute_outcome)
             .sum::<u64>()
-            .into()
     }
 
-    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Self::Output {
         input
             .iter()    
             .map(|line| {
@@ -62,7 +61,6 @@ impl Solution<DAY_02> for Solutions {
             })
             .map(Shape::compute_outcome)
             .sum::<u64>()
-            .into()
     }
 }
 

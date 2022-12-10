@@ -45,18 +45,20 @@ impl Solution<DAY_06> for Solutions {
             .collect()
     }
 
-    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Self::Output {
         input
             .windows(4)
             .position(uniqueness_check)
             .map(|i| i + 4)
+            .unwrap()
     }
 
-    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Self::Output {
         input
             .windows(14)
             .position(uniqueness_check)
             .map(|i| i + 14)
+            .unwrap()
     }
 }
 

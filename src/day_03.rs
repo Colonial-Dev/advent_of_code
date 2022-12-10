@@ -26,7 +26,7 @@ impl Solution<DAY_03> for Solutions {
         puzzle.lines().collect()
     }
 
-    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Self::Output {
         input
             .iter()
             .map(|line| {
@@ -37,10 +37,9 @@ impl Solution<DAY_03> for Solutions {
             .map(find_array_intersection)
             .map(priority_codes)
             .sum::<u64>()
-            .into()
     }
 
-    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Self::Output {
         input
             .chunks(3)
             .map(<[&str; 3]>::try_from)
@@ -48,7 +47,6 @@ impl Solution<DAY_03> for Solutions {
             .map(find_array_intersection)
             .map(priority_codes)
             .sum::<u64>()
-            .into()
     }
 }
 

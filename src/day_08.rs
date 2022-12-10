@@ -90,7 +90,7 @@ impl Solution<DAY_08> for Solutions {
         map
     }
 
-    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Self::Output {
         input
             .enumerate_coordinates()
             .filter(|coordinates| {
@@ -111,10 +111,9 @@ impl Solution<DAY_08> for Solutions {
                 visible.iter().any(|vis| *vis)
             })           
             .count()
-            .into()
     }
 
-    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Self::Output {
         input
             .enumerate_coordinates()
             .map(|(row, col)| {
@@ -135,6 +134,7 @@ impl Solution<DAY_08> for Solutions {
                 scores.iter().product::<usize>()
             })
             .max()
+            .unwrap()
     }
 }
 

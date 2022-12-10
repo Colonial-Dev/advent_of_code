@@ -96,7 +96,7 @@ impl Solution<DAY_07> for Solutions {
         fs
     }
 
-    fn part_one(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_one(input: &Self::Input<'_>) -> Self::Output {
         input.table
             .values()
             .filter_map(|dir| match dir.deep_size {
@@ -104,10 +104,9 @@ impl Solution<DAY_07> for Solutions {
                 _ => None
             })
             .sum::<usize>()
-            .into()
     }
 
-    fn part_two(input: &Self::Input<'_>) -> Option<Self::Output> {
+    fn part_two(input: &Self::Input<'_>) -> Self::Output {
         const FILESYSTEM_SIZE: usize = 70_000_000;
         const UPDATE_SIZE: usize = 30_000_000;
 
@@ -121,6 +120,7 @@ impl Solution<DAY_07> for Solutions {
                 else { Some(dir.deep_size) }
             })            
             .min()
+            .unwrap()
     }
 }
 
