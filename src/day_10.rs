@@ -149,30 +149,28 @@ impl<'a> Processor<'a> {
 
 struct Screen {
     pixels: [[bool; 40]; 6],
-    current_pix: (usize, usize)
+    beam: (usize, usize)
 }
 
 impl Screen {
     pub fn new() -> Self {
         Self {
             pixels: [[false; 40]; 6],
-            current_pix: (0, 0)
+            beam: (0, 0)
         }
     }
 
     pub fn update(&mut self, rax: isize) {
-        let (x, y) = self.current_pix;
+        let (x, y) = self.beam;
         
         if (rax as i32 - x as i32).abs() <= 1 {
             self.pixels[y][x] = true; 
         }
         
-        let (new_x, new_y) = match x + 1 {
+        self.beam = match x + 1 {
             0..=39 => (x + 1, y),
             _ => (0, y + 1)
         };
-
-        self.current_pix = (new_x, new_y);
     }
 }
 
