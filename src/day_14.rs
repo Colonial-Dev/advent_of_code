@@ -1,4 +1,4 @@
-//! # Day N - 
+//! # Day 14 - 
 //! 
 //! Puzzle opened on time. 
 //! - P1 completed @ 
@@ -6,7 +6,7 @@
 
 use super::*;
 
-impl Solution<DAY_N> for Solutions {
+impl Solution<DAY_14> for Solutions {
     type Input<'i> = ();
     type Output = usize;
 
@@ -15,7 +15,7 @@ impl Solution<DAY_N> for Solutions {
     }
 }
 
-impl Test<DAY_N> for Solutions {
+impl Test<DAY_14> for Solutions {
     fn expected(part: bool) -> Self::Output {
         match part {
             PART_ONE => unimplemented!(),
@@ -24,4 +24,4 @@ impl Test<DAY_N> for Solutions {
     }
 }
 
-derive_tests!(Solutions, DAY_N);
+derive_tests!(Solutions, DAY_14);

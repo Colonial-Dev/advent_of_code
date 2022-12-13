@@ -137,7 +137,7 @@ impl Graph {
     }
     
     /// Implementation of breadth-first search that finds the length
-    /// of the shortest path between the given start and target. 
+    /// of the shortest path between the given start and target, measured in edge traversals.
     pub fn shortest_path<F>(&self, start: usize, target: char, filter: F) -> Option<usize> where
         F: Fn(u8, u8) -> bool
     {
@@ -161,7 +161,7 @@ impl Graph {
                 _ => vertex.value
             };
 
-            let frontiers = vertex.edges
+            vertex.edges
                 .iter()
                 .copied()
                 .filter(|i| {
@@ -173,14 +173,12 @@ impl Graph {
                     };
                     filter(edge, value as u8)
                 })
-                .filter(|i| !explored.contains(i) )
-                .collect::<Vec<_>>();
-
-            for vertex in frontiers {
-                explored.insert(vertex);
-                queue.push_back(vertex);
-                parents[vertex] = Some(index);
-            }
+                .for_each(|i| {
+                    if explored.insert(i) {
+                        queue.push_back(i);
+                        parents[i] = Some(index);
+                    }
+                });
         }
 
         None
