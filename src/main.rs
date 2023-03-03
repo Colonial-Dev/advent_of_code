@@ -16,6 +16,8 @@ mod day_13;
 mod day_14;
 mod day_15;
 mod day_16;
+mod day_17;
+mod day_18;
 
 use lib_aoc::prelude::*;
 
@@ -34,5 +36,5 @@ impl Solver for Solutions {
 }
 
 fn main() {
-    solve!(Solutions, 16);
+    solve_through!(Solutions, 18);
 }
