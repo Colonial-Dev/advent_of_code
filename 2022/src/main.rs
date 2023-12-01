@@ -36,5 +36,6 @@ impl Solver for Solutions {
 }
 
 fn main() {
+    let arr = solution_array!(Solutions, 18); 
     solve_through!(Solutions, 18);
 }
