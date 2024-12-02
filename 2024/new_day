@@ -1,0 +1,22 @@
+#!/usr/bin/env fish
+
+function create_files -a day
+    cp src/day_n.rs src/day_$day.rs
+    touch src/inputs/$day.txt src/inputs/test_$day.txt
+end
+
+function update_main -a day
+    set -l previous (tac src/main.rs | grep "mod day_[0-9][0-9];" -m 1)
+    sed -i "s/$previous/$previous\nmod day_$day;/" src/main.rs
+end
+
+function update_solution -a day
+    sed -i "s/Day N/Day $day/" src/day_$day.rs
+    sed -i "s/DAY_N/DAY_$day/" src/day_$day.rs
+end
+
+set day (string pad -w 2 -c 0 $argv[1])
+
+create_files $day
+update_main $day
+update_solution $day
