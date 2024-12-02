@@ -1,6 +1,7 @@
 #![warn(clippy::perf, clippy::style, warnings)]
 
 mod day_01;
+mod day_02;
 
 use lib_aoc::prelude::*;
 
@@ -29,5 +30,5 @@ impl Solver for Solutions {
 }
 
 fn main() {
-    solve_through!(Solutions, 1);
+    solve_through!(Solutions, 2);
 }

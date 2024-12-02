@@ -1,9 +1,11 @@
-//! # Day 1 - 
-//! 
+//! # Day 1 - Historian Hysteria
+//!  
 //! Puzzle opened on time. 
-//! - P1 completed @ 
-//! - P2 completed @
-
+//! - P1 completed @ 00:06:27 (#2757)
+//! - P2 completed @ 00:09:55 (#2696)
+//! 
+//! Reading comprehension is hard and the heating in my room is mega ass.
+ 
 use std::collections::HashMap;
 
 use super::*;
@@ -16,25 +18,22 @@ impl Solution<DAY_01> for Solutions {
         let mut l = vec![];
         let mut r = vec![];
 
+        let usize_parse = |(a, b): (&str, &str)| {
+            (
+                a.parse::<usize>().unwrap(),
+                b.parse::<usize>().unwrap()
+            )
+        };
+
         for line in puzzle.lines() {
             let (left, right) = line
                 .split_once("   ")
+                .map(usize_parse)
                 .unwrap();
             
             l.push(left);
             r.push(right);
         }
-
-        let usize_parse = |v: Vec<_>| -> Vec<_> {
-            v
-                .into_iter()
-                .map(str::parse::<usize>)
-                .map(Result::unwrap)
-                .collect()
-        };
-
-        let mut l = usize_parse(l);
-        let mut r = usize_parse(r);
 
         l.sort_unstable();
         r.sort_unstable();
@@ -56,15 +55,16 @@ impl Solution<DAY_01> for Solutions {
         let (l, r) = input;
 
         let counts = r.iter().fold(HashMap::new(), |mut acc, x| {
-            *acc.entry(x).or_insert(0) += 1;
+            *acc
+                .entry(x)
+                .or_insert(0) += 1;
+
             acc
         });
 
         l
             .iter()
-            .map(|n| {
-                counts.get(n).unwrap_or(&0) * n
-            })
+            .map(|n| counts.get(n).unwrap_or(&0) * n)
             .sum::<usize>()
     }
 }
