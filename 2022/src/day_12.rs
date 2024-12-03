@@ -36,7 +36,7 @@
 //! 
 //! This allows both parts to find the absolute shortest path in under 500 micros.
 
-use std::{collections::{VecDeque, HashSet}};
+use std::collections::{VecDeque, HashSet};
 
 use super::*;
 

@@ -1,4 +1,4 @@
-#![warn(clippy::perf, clippy::style, warnings)]
+#![allow(clippy::doc_lazy_continuation)]
 
 mod day_01;
 mod day_02;
@@ -17,7 +17,6 @@ mod day_14;
 mod day_15;
 mod day_16;
 mod day_17;
-mod day_18;
 
 use lib_aoc::prelude::*;
 
@@ -36,6 +35,5 @@ impl Solver for Solutions {
 }
 
 fn main() {
-    let arr = solution_array!(Solutions, 18); 
-    solve_through!(Solutions, 18);
+    solve_through!(Solutions, 17);
 }

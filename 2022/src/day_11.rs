@@ -184,7 +184,7 @@ fn pass(monkeys: &mut [Monkey], callback: impl Fn(&mut u64)) {
             // We use an braced expression to artificially limit the scope
             // of our monkey mutable borrow.
             let targets = {
-                let mut monkey = &mut monkeys[i];
+                let monkey = &mut monkeys[i];
 
                 monkey.operation.apply(&mut item);
                 callback(&mut item);
