@@ -31,5 +31,5 @@ impl Solver for Solutions {
 }
 
 fn main() {
-    solve_through!(Solutions, 2);
+    solve_through!(Solutions, 3);
 }
