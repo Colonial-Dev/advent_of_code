@@ -1,9 +1,3 @@
-//! # Day N - 
-//! 
-//! Puzzle opened on time. 
-//! - P1 completed @ 
-//! - P2 completed @
-
 use super::*;
 
 impl Solution<DAY_N> for Solutions {

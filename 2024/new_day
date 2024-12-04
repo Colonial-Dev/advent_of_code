@@ -11,7 +11,6 @@ function update_main -a day
 end
 
 function update_solution -a day
-    sed -i "s/Day N/Day $day/" src/day_$day.rs
     sed -i "s/DAY_N/DAY_$day/" src/day_$day.rs
 end
 

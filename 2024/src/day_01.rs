@@ -1,11 +1,3 @@
-//! # Day 1 - Historian Hysteria
-//!  
-//! Puzzle opened on time. 
-//! - P1 completed @ 00:06:27 (#2757)
-//! - P2 completed @ 00:09:55 (#2696)
-//! 
-//! Reading comprehension is hard and the heating in my room is mega ass.
- 
 use std::collections::HashMap;
 
 use super::*;

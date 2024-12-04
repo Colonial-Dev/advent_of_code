@@ -1,9 +1,3 @@
-//! # Day 2 - Red-Nosed Reports
-//! 
-//! Puzzle opened late.
-//! - P1 completed @ 13:16:05
-//! - P2 completed @ 13:29:02
-
 use super::*;
 
 #[derive(Debug)]

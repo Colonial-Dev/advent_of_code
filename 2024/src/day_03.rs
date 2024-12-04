@@ -1,9 +1,3 @@
-//! # Day 03 - 
-//! 
-//! Puzzle opened on time. 
-//! - P1 completed @ 
-//! - P2 completed @
-
 use super::*;
 
 #[derive(Debug, Copy, Clone)]
@@ -75,7 +69,7 @@ impl Solution<DAY_03> for Solutions {
                 }
             }
         }
-        println!("{instructions:?}");
+
         instructions
     }
 
